@@ -193,8 +193,15 @@
             // Show thank you message
             showMessage('Thank you for submitting your prescription!', 'success');
 
-            // Reset form
-            form.reset();
+            // Hide the entire form so the upload button and inputs are no longer visible
+            form.style.display = 'none';
+
+            // Optionally clear the file input and filename (not strictly required since the form is hidden)
+            try {
+                fileInput.value = '';
+            } catch (err) {
+                // some browsers may throw on programmatic file input changes; ignore
+            }
             fileNameDisplay.textContent = '';
 
             // Hide message after 5 seconds
